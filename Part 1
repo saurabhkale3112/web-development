@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(121, 237, 121);
+        }
+    </style>
+    <script>
+        function check_name(n) {
+
+            n = n.split(" ")
+            // console.log(n)
+            // console.log(n[0])
+            // console.log(n[1])
+
+            if (n.length >= 2) {
+                // console.log(n)
+                if (n[0].length >= 4 && n[1].length >= 4) {
+                    console.log(n[0])
+                    console.log(n[1])
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+
+        }
+        function check_pass(pass) {
+            pass = document.getElementById("email").value;
+            len = pass.length;
+            len -= 10;
+            console.log(len, pass[len], pass[len + 1])
+            if (pass[len] == "@" && pass[len + 1] == "g" && pass[len + 2] == "m" && pass[len + 3] == "a" && pass[len + 4] == "i" && pass[len + 5] == "l" && pass[len + 6] == "." && pass[len + 7] == "c" && pass[len + 8] == "o" && pass[len + 9] == "m") {
+                console.log("correct");
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function check_pan() {
+            var p1 = document.getElementById("pan_input").value;
+            var pan_c = /([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+            var dis = document.getElementById("pan_lbl");
+            if (pan_c.test(p1.toUpperCase())) {
+                dis.style.visibility = "hidden";
+                return true;
+            } else {
+                dis.style.visibility = "visible";
+                return false;
+            }
+        }
+        function word1(n1) {
+            var unit = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+            ten = ['', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninghty']
+            sp = [' ', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'ninghteen', 'twenty']
+            console.log(n1.length, typeof (n1));
+            if (Number(n1) <= 20) {
+                n2 = Number(n1)
+                ans = sp[n2];
+                console.log(ans);
+
+                console.log("n2", n2, typeof (n2), sp[n2]);
+                return ans;
+            }
+            else if (Number(n1) >= 21 && Number(n1) <= 99) {
+                ans = ten[n1[0]] + ' ' + unit[n1[1]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 100 && Number(n1) <= 999) {
+                ans = unit[n1[0]] + ' hundred ' + ten[n1[1]] + ' ' + unit[n1[2]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 1000 && Number(n1) <= 9999) {
+                ans = unit[n1[0]] + ' thausand ' + unit[n1[1]] + ' hundred ' + ten[n1[2]] + ' ' + unit[n1[3]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 10000 && Number(n1) <= 99999) {
+                console.log(n1)
+                ans = ten[n1[0]] + unit[n1[1]] + ' thausand ' + unit[n1[2]] + ' hundred ' + ten[n1[3]] + ' ' + unit[n1[4]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 100000 && Number(n1) <= 999999) {
+                ans = unit[n1[0]] + ' lakh ' + ten[n1[1]] + unit[n1[2]] + ' thausand ' + unit[n1[3]] + ' hundred ' + ten[n1[4]] + ' ' + unit[n1[5]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 1000000 && Number(n1) <= 9999999) {
+                ans = ten[n1[0]] + unit[n1[1]] + ' lakh ' + ten[n1[2]] + unit[n1[3]] + ' thausand ' + unit[n1[4]] + ' hundred ' + ten[n1[5]] + ' ' + unit[n1[6]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 10000000 && Number(n1) <= 99999999) {
+                ans = unit[n1[0]] + ' crore ' + ten[n1[1]] + unit[n1[2]] + ' lakh ' + ten[n1[3]] + unit[n1[4]] + ' thausand ' + unit[n1[5]] + ' hundred ' + ten[n1[6]] + ' ' + unit[n1[7]];
+                console.log(ans);
+                return ans;
+            }
+            else if (Number(n1) >= 100000000 && Number(n1) <= 999999999) {
+                ans = ten[n1[0]] + unit[n1[1]] + ' crore ' + ten[n1[2]] + unit[n1[3]] + ' lakh ' + ten[n1[4]] + unit[n1[5]] + ' thausand ' + unit[n1[6]] + ' hundred ' + ten[n1[7]] + ' ' + unit[n1[8]];
+                console.log(ans)
+                return ans;
+            }
+            else {
+                ans = "Invalid";
+                return ans;
+            }
+
+
+
+        }
+        function check_validity() {
+            if (w1 == "Invalid") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        var li = ["+", '-', '*', '+', '-', '*']
+        function gen() {
+            var cap_lbl = document.getElementById("cap");
+
+            var a = Math.round(Math.random() * 10);
+            var b = Math.round(Math.random() * 10);
+            var op = Math.round((Math.random() * 10) / 2);
+
+            var op1 = li[op]
+
+            console.log(li[op])
+            cap_lbl.innerText = "\t\t " + String(a) + "\t " + String(li[op]) + '\t' + String(b);
+        }
+        function find_op(op) {
+            for (let i = 0; i < 4; i++) {
+                if (op == li[i]) {
+                    return i;
+                }
+            }
+
+        }
+
+        function eval() {
+            let e1 = document.getElementById("ans_cap").value;
+            let c1 = document.getElementById("cap").innerText;
+            console.log(e1, c1, typeof (c1), c1.length, c1[0], c1[2], c1[4]);
+
+            op2 = find_op(c1[2]);
+            if (op2 == 0) {
+                ans = Number(c1[0]) + Number(c1[4]);
+            }
+            else if (op2 == 1) {
+                ans = Number(c1[0]) - Number(c1[4]);
+            }
+            else if (op2 == 2) {
+                ans = Number(c1[0]) * Number(c1[4]);
+            }
+            console.log(op2, typeof (op2), ans);
+            if (ans == e1) {
+                window.alert("Correctly solved captcha");
+                return true;
+            }
+            if (ans != e1) {
+                window.alert("Please Correctly sove captcha");
+                return false;
+            }
+
+
+        }
+        function call() // this get call firstlyy
+        {
+            sub = document.getElementById("submit");
+
+            let n = document.getElementById("name").value
+            console.log(n)
+            let ans1 = check_name(n);// call for check
+            let pass = document.getElementById("email").value
+            let ans2 = check_pass(pass);
+            let ans3 = check_pan();
+            var n1 = document.getElementById("amount").value;
+            console.log(typeof (n1), Number(n1), typeof (Number(n1)));
+            var am1 = document.getElementById("in_word");
+            w1 = word1(n1);
+
+            am1.innerText = "Amount \t:\t" + String(w1) + '\t' + "RS";
+            ans4 = check_validity(w1);
+            ans5 = eval();
+
+            if (ans1 == true && ans2 == true && ans3 == true && ans4 == true && ans5 == true) {
+                window.alert("accepted\t ALL Details");
+                n=n.split(' ')
+                sessionStorage.setItem("name", n[0]);
+                sessionStorage.setItem("mail",pass);
+                u_ans = window.confirm("you wants to open new page");
+                if (u_ans == true) {
+                    window.location = "file:///F:/New%20folder/HTML/part2.html";
+                }
+
+            } else {
+                window.alert("NOT accepted");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action="abc.php">
+    <h1>Enter Full name : <input id="name" type="text" value=""></h1>
+    <h1>Enter Email<input type="email" id="email" pattern="@gmail.com" required></h1>
+    <h1>Enter Pan No <input type="text" id="pan_input"><span id="pan_lbl">Invalid</span></h1>
+    <h1>Enter Amount <input type="number" id="amount" onkeypress="call_am()"></h1>
+    <h1 id="in_word">0</h1>
+
+    <h3>Please solve following captch</h3>
+    <h1><input type="button" value="new captcha" onclick="gen()"></h1>
+    <h2 id="cap">click on button</h2>
+    <h1><input type="number" id="ans_cap"></h1>
+    <button type="submit" value="submit " id="submit" onclick="call()">submit</button>
+</form>
+</body>
+<style>
+    #submit{
+        background-color: green;
+        font-size: 31px;
+        text-align: center;
+        
+    }
+</style>
+</html>
