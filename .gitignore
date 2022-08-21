@@ -1,11 +1,52 @@
-.htaccess
-css.php
-rpc/
-sites/site*/admin/
-sites/site*/private/
-sites/site*/public/admin/
-sites/site*/public/setup/
-sites/site*/public/theme/
-textpattern/
-HISTORY.txt
-README.txt
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check_otp() {
+            let otp = sessionStorage.getItem('otp');
+            let user_otp = document.getElementById('otp_box').value;
+            if (user_otp == otp) {
+                console.log("correct otp");
+                let last=window.confirm("correct otp\n\n Wants open new page");
+                if(last==true){
+                   
+                    window.location="http://pixel6.co/";
+                }
+
+            }
+            else{
+                console.log("incorrrect OTP");
+                window.location="https://learn.onemonth.com/what-is-a-404-page/";
+            }
+        }
+        function fun() {
+            var otp = Math.round(Math.random()*10000);
+            var name = sessionStorage.getItem('name');
+            var email = sessionStorage.getItem('mail');
+            console.log(name, "\totp is \t", otp, "send on \t" + email);
+            sessionStorage.setItem('otp', otp);
+            let ch = document.getElementById('change');
+            ch.innerText = "Thank You\t\t" + name + "\n\n\t\t" + "OTP\t send on \t\t\t" + '\t' + email;
+            window.confirm('OTP GENERATED SUCCCESFULLY!')
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="change">thank you</h1>
+
+
+    <input type="button" id="btn" value="generate OTP" onclick="fun()">
+    <input type="text" id='otp_box'>
+    <input type="submit" value="Validate otp" onclick="check_otp()">
+
+</body>
+
+</html>
